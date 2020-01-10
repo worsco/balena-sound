@@ -31,4 +31,6 @@ RUN chmod +x /usr/src/bluetooth-agent
 COPY start.sh /usr/src/
 RUN chmod +x /usr/src/start.sh
 
+COPY .asoundrc /root/.asoundrc
+
 CMD [ "/bin/bash", "/usr/src/start.sh" ]

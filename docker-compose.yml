@@ -9,20 +9,30 @@ services:
       io.balena.features.dbus: 1
     volumes:
       - bluetoothcache:/var/cache/bluetooth
-  airplay:
-    build: ./airplay
-    restart: always
-    network_mode: host
+      - snapcast:/var/cache/snapcast
+  # airplay:
+  #   build: ./airplay
+  #   restart: always
+  #   network_mode: host
+  #   privileged: true
+  #   labels:
+  #     io.balena.features.dbus: 1
+  # spotify:
+  #   build: ./spotify
+  #   restart: always
+  #   network_mode: host
+  #   privileged: true
+  #   volumes:
+  #     - spotifycache:/var/cache/raspotify
+  snapcast:
+    build: ./snapcast
     privileged: true
+    network_mode: host   
     labels:
-      io.balena.features.dbus: 1
-  spotify:
-    build: ./spotify
-    restart: always
-    network_mode: host
-    privileged: true
+      io.balena.features.dbus: 1     
     volumes:
-      - spotifycache:/var/cache/raspotify
+      - snapcast:/var/cache/snapcast
 volumes:
   spotifycache:
   bluetoothcache:
+  snapcast:
