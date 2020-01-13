@@ -1,16 +1,16 @@
-const os = require('os')
-const { exec } = require('child_process')
+const { exec, execSync } = require('child_process')
 
 module.exports.getIPAdress = () => {
-  let interfaces = os.networkInterfaces()
   let address = '127.0.0.1'
 
-  if (interfaces.wlan0) {
-    address = interfaces.wlan0.find(i => i.family === 'IPv4').address
-  } else if (interfaces.eth0) {
-    address = interfaces.eth0.find(i => i.family === 'IPv4').address
+  try {
+    let command =`curl -X GET --header "Content-Type:application/json" "$BALENA_SUPERVISOR_ADDRESS/v1/device?apikey=$BALENA_SUPERVISOR_API_KEY"`
+    let data = execSync(command)
+    address = JSON.parse(data.toString()).ip_address.split(' ')[0]
+  } catch (error) {
+    console.log(error)
   }
-
+  
   return address
 }
 
