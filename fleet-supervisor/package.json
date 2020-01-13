@@ -1,0 +1,14 @@
+{
+  "name": "fleet-supervisor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Tomás Migone <tomas@balena.io",
+  "license": "MIT",
+  "dependencies": {
+    "cote": "^1.0.0"
+  }
+}

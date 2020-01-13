@@ -4,7 +4,7 @@ ARG SNAPCAST_VERSION=0.17.1
 
 WORKDIR /usr/src
 
-RUN install_packages wget libavahi-client3 libavahi-common3 libflac8 libogg0 libopus0 libvorbis0a libvorbisenc2 libasound2 alsa-utils mplayer
+RUN install_packages wget libavahi-client3 libavahi-common3 libflac8 libogg0 libopus0 libvorbis0a libvorbisenc2 libasound2 alsa-utils
 RUN wget 'https://github.com/badaix/snapcast/releases/download/v'$SNAPCAST_VERSION'/snapclient_'$SNAPCAST_VERSION'-1_armhf.deb'
 RUN dpkg -i 'snapclient_'$SNAPCAST_VERSION'-1_armhf.deb'
 

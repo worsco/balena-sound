@@ -1,5 +1,10 @@
 version: '2'
 services:
+  fleet-supervisor:
+    build: ./fleet-supervisor
+    network_mode: host
+    labels:
+      io.balena.features.supervisor-api: 1
   bluetooth-audio:
     network_mode: host
     restart: always
