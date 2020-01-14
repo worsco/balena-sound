@@ -1,7 +1,7 @@
 const cote = require('cote')
 const snapcastServer = require('./src/SnapcastServer')
 const masterServer = require('./src/MasterServer')
-const { getIPAdress, restartBalenaService } = require('./src/utils')
+const { getIPAddress, restartBalenaService } = require('./src/utils')
 
 const fleetPublisher = new cote.Publisher({ name: 'Fleet publisher' })
 const fleetSubscriber = new cote.Subscriber({ name: 'Fleet subscriber' })
@@ -10,7 +10,7 @@ const fleetSubscriber = new cote.Subscriber({ name: 'Fleet subscriber' })
 // On audio playback, set this server as the master
 snapcastServer.connect()
 snapcastServer.onPlayback((data) => {
-  fleetPublisher.publish('fleet-update', { master: getIPAdress() })
+  fleetPublisher.publish('fleet-update', { master: getIPAddress() })
 })
 
 // Handle fleet-update events

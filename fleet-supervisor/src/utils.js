@@ -1,6 +1,6 @@
 const { exec, execSync } = require('child_process')
 
-module.exports.getIPAdress = () => {
+module.exports.getIPAddress = () => {
   let address = '127.0.0.1'
 
   try {
