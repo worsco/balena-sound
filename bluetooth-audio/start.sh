@@ -29,6 +29,11 @@ printf "discoverable on\npairable on\nexit\n" | bluetoothctl > /dev/null
 # Start bluetooth and audio agent
 /usr/src/bluetooth-agent &
 
+# If multi room is disabled remove audio redirect to fifo pipe
+if [[ -n $DISABLE_MULTI_ROOM ]]; then
+  rm /root/.asoundrc
+fi
+
 sleep 2
 rm -rf /var/run/bluealsa/
 /usr/bin/bluealsa -i hci0 -p a2dp-sink &

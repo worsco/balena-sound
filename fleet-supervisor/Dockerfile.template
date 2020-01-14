@@ -2,6 +2,9 @@ FROM balenalib/%%BALENA_MACHINE_NAME%%-alpine-node
 WORKDIR /usr/src
 
 COPY . .
-RUN npm install
+RUN JOBS=MAX npm install --only=production
 
-CMD [ "npm", "start" ]
+COPY start.sh /usr/src/
+RUN chmod +x /usr/src/start.sh
+
+CMD [ "/bin/bash", "/usr/src/start.sh" ]
