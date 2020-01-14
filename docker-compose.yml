@@ -1,14 +1,5 @@
 version: '2'
 services:
-  fleet-supervisor:
-    build: ./fleet-supervisor
-    restart: always
-    network_mode: host
-    privileged: true
-    ports:
-      - 3000:3000
-    labels:
-      io.balena.features.supervisor-api: 1
   bluetooth-audio:
     build: ./bluetooth-audio
     restart: always
@@ -36,8 +27,20 @@ services:
     volumes:
       - spotifycache:/var/cache/raspotify
       - snapcast:/var/cache/snapcast
+  fleet-supervisor:
+    build: ./fleet-supervisor
+    restart: always
+    network_mode: host
+    privileged: true
+    ports:
+      - 3000:3000
+    labels:
+      io.balena.features.supervisor-api: 1      
   snapcast-server:
-    build: ./snapcast-server
+    build: 
+      context: ./snapcast-server
+      args:
+        SNAPCAST_VERSION: 0.17.1
     restart: always
     ports:
       - 1704:1704
@@ -45,7 +48,10 @@ services:
     volumes:
       - snapcast:/var/cache/snapcast
   snapcast-client:
-    build: ./snapcast-client
+    build: 
+      context: ./snapcast-client
+      args:
+        SNAPCAST_VERSION: 0.17.1
     restart: always 
     network_mode: host 
     privileged: true

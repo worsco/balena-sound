@@ -1,17 +1,9 @@
-FROM balenalib/raspberrypi3:stretch
+FROM balenalib/raspberrypi3-debian:stretch
 
 ENV DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
-
 ENV UDEV=1
 
-RUN install_packages \
-  alsa-utils \
-  bluealsa \
-  bluez \
-  python-gobject \
-  python-dbus \
-  python-gpiozero \
-  mplayer
+RUN install_packages alsa-utils bluealsa bluez python-gobject python-dbus python-gpiozero mplayer
 
 # Copy sounds
 COPY sounds /usr/src/sounds
