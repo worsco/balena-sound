@@ -1,4 +1,4 @@
-const { exec, execSync } = require('child_process')
+const { execSync } = require('child_process')
 
 module.exports.getIPAddress = () => {
   let address = '127.0.0.1'
@@ -16,11 +16,6 @@ module.exports.getIPAddress = () => {
 
 module.exports.restartBalenaService = (serviceName) => {
   let command = `curl --header "Content-Type:application/json" "$BALENA_SUPERVISOR_ADDRESS/v2/applications/$BALENA_APP_ID/restart-service?apikey=$BALENA_SUPERVISOR_API_KEY" -d \'{"serviceName": "${serviceName}"}\'`
-  exec(command, (err, stdout, stderr) => {
-    if (err) {
-      return
-    }
-    console.log(`stdout: ${stdout}`)
-    console.log(`stderr: ${stderr}`)
-  })
+  let result = execSync(command)
+  console.log(result)
 }
