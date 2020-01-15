@@ -8,7 +8,7 @@
 - **Bluetooth, Airplay and Spotify Connect support**: Stream audio from your favourite music services or directly from your smartphone/computer using bluetooth.
 - **Multi room syncronous playing**: Play perfectly syncronized audio on multiple devices all over your place.
 
-## Hardware required
+### Hardware required
 
 * Raspberry Pi 3A+/3B/3B+/4B/Zero W
 * SD Card (we recommend 8GB Sandisk Extreme Pro)
@@ -19,14 +19,14 @@
 - The Raspberry Pi Zero cannot be used on it's own as it has no audio output. To use the Pi Zero you'll need to add something like the [Pimoroni pHAT DAC](https://shop.pimoroni.com/products/phat-dac) to go with it.
 - There is a [known issue](https://github.com/raspberrypi/linux/issues/1444) with all variants of the Raspberry Pi 3 where Bluetooth and WiFi interfere with each other. This will only impact the performance of balenaSound if you use a **Pi 3 as the master server to do multi room bluetooth streaming**, resulting in stuttering audio (Airplay and Spotify Connect will work fine, as well as all streaming methods with multi room disabled). In this cases we recommend the use of a Raspberry Pi 4 as the `master` server or a Pi 3 with a bluetooth dongle.
 
-## Software required
+### Software required
 
 * A download of this project (of course)
 * Software to flash an SD card ([balenaEtcher](https://balena.io/etcher))
 * A free [balenaCloud](https://balena.io/cloud) account
 * The [balena CLI tools](https://github.com/balena-io/balena-cli/blob/master/INSTALL.md)
 
-## Setup and use
+### Setup and use
 
 Running this project is as simple as deploying it to a balenaCloud application; no additional configuration is required (unless you're using a DAC HAT).
 
@@ -44,8 +44,6 @@ Running this project is as simple as deploying it to a balenaCloud application; 
 * Login with `balena login`
 * Download this project and from the project directory run `balena push <appName>` where `<appName>` is the name you gave your balenaCloud application in the first step.
 
----
-
 # Usage
 
 After the application has pushed and the device has downloaded the latest changes you're ready to go! Before starting, connect the audio output of your Pi to the AUX input on your Hi-Fi or speakers. You can also use the HDMI port to get digitalized audio output.
@@ -59,8 +57,6 @@ Here is how to connect to your device:
 If you are running in multi room mode, when you start streaming the device will configure itself as the `master server` and will broadcast a message to all other devices to get them in sync. Note that it can take a few seconds for the system to autoconfigure the first time you stream from a `master server`.
 
 Let the music play!
-
----
 
 # Customize your balenaSound experience
 
