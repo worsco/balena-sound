@@ -38,6 +38,7 @@ sleep 2
 rm -rf /var/run/bluealsa/
 /usr/bin/bluealsa -i hci0 -p a2dp-sink &
 
+hciconfig hci1 down > /dev/null 2>&1 # Disable onboard bluetooth if using a bluetooth dongle (onboard interface gets remapped to hci1) 
 hciconfig hci0 up
 hciconfig hci0 name "$BLUETOOTH_DEVICE_NAME"
 

@@ -1,6 +1,5 @@
 const net = require('net')
 
-
 class SnapcastServer {
   constructor (config = {}) {
     const options = Object.assign({
@@ -32,7 +31,6 @@ class SnapcastServer {
       return ''
     }
   }
-
 }
 
-module.exports = new SnapcastServer()
+module.exports = SnapcastServer

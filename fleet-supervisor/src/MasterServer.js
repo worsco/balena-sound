@@ -10,6 +10,8 @@ class MasterServer {
 
     this.address = this.options.defaultAddress
 
+    this.isCurrentMaster = false
+
     this.server = http.createServer((req, res) => {
       res.end(this.address)
     })
@@ -20,8 +22,13 @@ class MasterServer {
   }
 
   update (address) {
+    this.isCurrentMaster = this.address === address
     this.address = address
+  }
+
+  hasChanged (address) {
+    return this.address !== address
   }
 }
 
-module.exports = new MasterServer()
+module.exports = MasterServer

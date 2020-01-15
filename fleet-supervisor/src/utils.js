@@ -4,7 +4,7 @@ module.exports.getIPAddress = () => {
   let address = '127.0.0.1'
 
   try {
-    let command =`curl -X GET --header "Content-Type:application/json" "$BALENA_SUPERVISOR_ADDRESS/v1/device?apikey=$BALENA_SUPERVISOR_API_KEY"`
+    let command =`curl -s -X GET --header "Content-Type:application/json" "$BALENA_SUPERVISOR_ADDRESS/v1/device?apikey=$BALENA_SUPERVISOR_API_KEY"`
     let data = execSync(command)
     address = JSON.parse(data.toString()).ip_address.split(' ')[0]
   } catch (error) {
@@ -15,7 +15,6 @@ module.exports.getIPAddress = () => {
 }
 
 module.exports.restartBalenaService = (serviceName) => {
-  let command = `curl --header "Content-Type:application/json" "$BALENA_SUPERVISOR_ADDRESS/v2/applications/$BALENA_APP_ID/restart-service?apikey=$BALENA_SUPERVISOR_API_KEY" -d \'{"serviceName": "${serviceName}"}\'`
-  let result = execSync(command)
-  console.log(result)
+  let command = `curl -s --header "Content-Type:application/json" "$BALENA_SUPERVISOR_ADDRESS/v2/applications/$BALENA_APP_ID/restart-service?apikey=$BALENA_SUPERVISOR_API_KEY" -d \'{"serviceName": "${serviceName}"}\'`
+  execSync(command)
 }
