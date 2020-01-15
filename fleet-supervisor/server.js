@@ -28,10 +28,9 @@ fleetSubscriber.on('fleet-update', (update) => {
 // Handle fleet-sync events
 // Whenever a device joins the network, ask for current master
 fleetSubscriber.on('fleet-sync', () => {
-  let address = getIPAddress()
   if (masterServer.isCurrentMaster) {
     console.log(`New device joined, syncing fleet...`)
-    fleetPublisher.publish('fleet-update', { master: address })
+    fleetPublisher.publish('fleet-update', { master: getIPAddress() })
   }
 })
 
