@@ -26,7 +26,7 @@
 * A free [balenaCloud](https://balena.io/cloud) account
 * The [balena CLI tools](https://github.com/balena-io/balena-cli/blob/master/INSTALL.md)
 
-### Setup and use
+# Setup and use
 
 Running this project is as simple as deploying it to a balenaCloud application; no additional configuration is required (unless you're using a DAC HAT).
 
