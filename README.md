@@ -6,7 +6,7 @@
 
 **Features**
 - **Bluetooth, Airplay and Spotify Connect support**: Stream audio from your favourite music services or directly from your smartphone/computer using bluetooth.
-- **Multi room syncronous playing**: Play perfectly syncronized audio on multiple devices all over your place.
+- **Multi room syncronous playing**: Play perfectly synchronized audio on multiple devices all over your place.
 
 ### Hardware required
 
