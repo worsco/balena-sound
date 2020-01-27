@@ -11,7 +11,6 @@ if [[ -z $DISABLE_MULTI_ROOM ]]; then
   echo -e "Starting snapclient...\nTarget snapcast server: $SNAPCAST_SERVER"
   snapclient -h $SNAPCAST_SERVER
 else
-  echo "Multi room audio is disabled, not starting snapclient."
+  echo "Multi-room audio is disabled, not starting snapclient."
   while : ; do echo "${MESSAGE=Idling...}"; sleep ${INTERVAL=600}; done
 fi
-

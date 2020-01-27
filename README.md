@@ -2,11 +2,11 @@
 
 # Bluetooth, Airplay and Spotify audio streaming for any audio device
 
-**Starter project enabling you to add multi room audio streaming via Bluetooth, Airplay or Spotify Connect to any old speakers or Hi-Fi using just a Raspberry Pi.**
+**Starter project enabling you to add multi-room audio streaming via Bluetooth, Airplay or Spotify Connect to any old speakers or Hi-Fi using just a Raspberry Pi.**
 
 **Features**
 - **Bluetooth, Airplay and Spotify Connect support**: Stream audio from your favourite music services or directly from your smartphone/computer using bluetooth.
-- **Multi room syncronous playing**: Play perfectly synchronized audio on multiple devices all over your place.
+- **Multi-room synchronous playing**: Play perfectly synchronized audio on multiple devices all over your place.
 
 ### Hardware required
 
@@ -17,7 +17,7 @@
 
 **Notes** 
 - The Raspberry Pi Zero cannot be used on it's own as it has no audio output. To use the Pi Zero you'll need to add something like the [Pimoroni pHAT DAC](https://shop.pimoroni.com/products/phat-dac) to go with it.
-- There is a [known issue](https://github.com/raspberrypi/linux/issues/1444) with all variants of the Raspberry Pi 3 where Bluetooth and WiFi interfere with each other. This will only impact the performance of balenaSound if you use a **Pi 3 as the master server to do multi room bluetooth streaming**, resulting in stuttering audio (Airplay and Spotify Connect will work fine, as well as all streaming methods with multi room disabled). In this cases we recommend the use of a Raspberry Pi 4 as the `master` server or a Pi 3 with a bluetooth dongle.
+- There is a [known issue](https://github.com/raspberrypi/linux/issues/1444) with all variants of the Raspberry Pi 3 where Bluetooth and WiFi interfere with each other. This will only impact the performance of balenaSound if you use a **Pi 3 as the master server to do multi-room bluetooth streaming**, resulting in stuttering audio (Airplay and Spotify Connect will work fine, as well as all streaming methods with multi-room disabled). In this cases we recommend the use of a Raspberry Pi 4 as the `master` server or a Pi 3 with a bluetooth dongle.
 
 ### Software required
 
@@ -33,7 +33,7 @@ Running this project is as simple as deploying it to a balenaCloud application; 
 ### Setup the Raspberry Pi
 
 * Sign up for or login to the [balenaCloud dashboard](https://dashboard.balena-cloud.com)
-* Create an application, be sure to select the correct device type for your Raspberry Pi
+* Create an application, selecting the correct device type for your Raspberry Pi (we recommend setting the type as Raspberry Pi 1/Zero as your application will then be compatible with the Pi 1/Zero as well as all devices that were released afterward).
 * Add a device to the application, enabling you to download the OS
 * Flash the downloaded OS to your SD card with [balenaEtcher](https://balena.io/etcher)
 * Power up the Pi and check it's online in the dashboard
@@ -46,15 +46,15 @@ Running this project is as simple as deploying it to a balenaCloud application; 
 
 # Usage
 
-After the application has pushed and the device has downloaded the latest changes you're ready to go! Before starting, connect the audio output of your Pi to the AUX input on your Hi-Fi or speakers. You can also use the HDMI port to get digitalized audio output.
+After the application has pushed and the device has downloaded the latest changes you're ready to go! Before starting, connect the audio output of your Pi to the AUX input on your Hi-Fi or speakers. You can also use the HDMI port for digital audio output.
 
-Here is how to connect to your device:
+Connect to your balenaSound device:
 * If using Bluetooth: search for your device on your phone or laptop and pair.
 * If using Airplay: select the balenaSound device from your audio output options.
 * If using Spotify Connect: open Spotify and choose the balenaSound device as an alternate output.
 * The `balenaSound xxxx` name is used by default, where `xxxx` will be the first 4 characters of the device ID in the balenaCloud dashboard.
 
-If you are running in multi room mode, when you start streaming the device will configure itself as the `master server` and will broadcast a message to all other devices to get them in sync. Note that it can take a few seconds for the system to autoconfigure the first time you stream from a `master server`.
+If you are running in multi-room mode, when you start streaming the device you're connected to will configure itself as the `master` and will broadcast a message to all other devices within your balenaCloud application to get them in sync. **Note:** that it can take a few seconds for the system to autoconfigure the first time you stream.
 
 Let the music play!
 
@@ -78,13 +78,13 @@ Secondly, balenaSound will play connection/disconnection notification sounds at 
 
 **Note:** these variables should be defined as integer values without the `%` symbol.
 
-### Multi room
+### Multi-room
 
-By default, balenaSound will start in multi room mode. When running in multi room you can stream audio into a fleet of devices and have it play perfectly syncronized, it does not matter wether you have 2 or 100 devices, you only need them to be in the same network.
+By default, balenaSound will start in multi-room mode. When running multi-room you can stream audio into a fleet of devices and have it play perfectly synchronized. It does not matter wether you have 2 or 100 devices, you only need them to be part of the same local network.
 
-If you don't want to use multi room or you only have one device, you can disable it by creating the `DISABLE_MULTI_ROOM` variable (with any value, for example: `1`).
+If you don't want to use multi-room or you only have one device, you can disable it by creating the `DISABLE_MULTI_ROOM` variable (with any value, for example: `1`).
 
-**Note:** Multi room requires a network router that supports IP multicast/broadcast (most of modern routers do).
+**Note:** Multi-room requires a network router that supports IP multicast/broadcast (most modern routers do).
 
 ### Set bluetooth PIN code
 

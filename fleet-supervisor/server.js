@@ -19,7 +19,7 @@ snapcastServer.onPlayback((data) => {
 // Whenever the master server changes, reset snapcast-client service
 fleetSubscriber.on('fleet-update', (update) => {
   if (masterServer.hasChanged(update.master)) {
-    console.log(`Master server has changed to ${update.master}, restarting snapcast-client`)
+    console.log(`Multi-room master has changed to ${update.master}, restarting snapcast-client`)
     restartBalenaService('snapcast-client')
   }
   masterServer.update(update.master)
@@ -29,7 +29,7 @@ fleetSubscriber.on('fleet-update', (update) => {
 // Whenever a device joins the network, ask for current master
 fleetSubscriber.on('fleet-sync', () => {
   if (masterServer.isCurrentMaster) {
-    console.log(`New device joined, syncing fleet...`)
+    console.log(`New multi-room device joined, syncing fleet...`)
     fleetPublisher.publish('fleet-update', { master: getIPAddress() })
   }
 })
